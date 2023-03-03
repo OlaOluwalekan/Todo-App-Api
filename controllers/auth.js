@@ -45,7 +45,7 @@ const loginUser = async (req, res, next) => {
         maxAge: 1000 * 60 * 60 * 24,
         sameSite: 'None',
         secure: true,
-        // domain: 'https://genuine-gelato-006362.netlify.app',
+        domain: 'https://genuine-gelato-006362.netlify.app/',
       })
       .status(200)
       .json({
