@@ -9,12 +9,7 @@ const usersRoutes = require('./routes/users')
 const todosRoutes = require('./routes/todos')
 
 // MIDDLEWARES
-app.use(
-  cors({
-    origin: 'http://localhost:5500',
-    credentials: true,
-  })
-)
+app.use(cors())
 app.use(cookieParser())
 app.use(express.json())
 
