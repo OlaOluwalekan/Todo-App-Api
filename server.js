@@ -23,6 +23,13 @@ app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/users', usersRoutes)
 app.use('/api/v1/todos', todosRoutes)
 
+app.all('*', function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5500')
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With')
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  next()
+})
+
 app.use((err, req, res, next) => {
   res
     .status(err.status)
