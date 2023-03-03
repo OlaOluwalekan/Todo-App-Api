@@ -11,7 +11,7 @@ const todosRoutes = require('./routes/todos')
 // MIDDLEWARES
 app.use(
   cors({
-    origin: 'http://localhost:5500',
+    origin: '*',
     credentials: true,
   })
 )
