@@ -18,7 +18,9 @@ const registerUser = async (req, res, next) => {
     await newUser.save()
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_TOKEN)
     res.cookie('access_token', token, { httpOnly: true })
-    res.status(201).json({ staus: 'success', message: 'user created', newUser })
+    res
+      .status(201)
+      .json({ staus: 'success', message: 'registration successful', newUser })
   } catch (error) {
     next(error)
   }
