@@ -39,20 +39,19 @@ const loginUser = async (req, res, next) => {
     }
     const { password, ...rest } = user._doc
     const token = jwt.sign({ id: user._id }, process.env.JWT_TOKEN)
-    res
-      .cookie('access_token', token, {
-        httpOnly: true,
-        maxAge: 1000 * 60 * 60 * 24,
-        sameSite: 'None',
-        secure: true,
-        domain: 'https://genuine-gelato-006362.netlify.app/',
-      })
-      .status(200)
-      .json({
-        staus: 'success',
-        message: 'login successful',
-        user: rest,
-      })
+    res.cookie('access_token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24,
+      sameSite: 'None',
+      secure: true,
+      // domain: 'https://genuine-gelato-006362.netlify.app/',
+    })
+    res.status(200).json({
+      staus: 'success',
+      message: 'login successful',
+      cookie: res.cookies,
+      user: rest,
+    })
   } catch (error) {
     next(error)
   }

@@ -7,28 +7,24 @@ const cookieParser = require('cookie-parser')
 const authRoutes = require('./routes/auth')
 const usersRoutes = require('./routes/users')
 const todosRoutes = require('./routes/todos')
+const { credentials, corsOptions } = require('./utils/cors')
 
 // MIDDLEWARES
-app.use(
-  cors({
-    origin: 'https://genuine-gelato-006362.netlify.app',
-    credentials: true,
-  })
-)
-app.use(cookieParser())
+// app.use(
+//   cors({
+//     origin: 'https://genuine-gelato-006362.netlify.app',
+//     credentials: true,
+//   })
+// )
+app.use(credentials)
+app.use(cors(corsOptions))
 app.use(express.json())
+app.use(cookieParser())
 
 // ROUTES MIDDLEWARES
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/users', usersRoutes)
 app.use('/api/v1/todos', todosRoutes)
-
-// app.all('*', function (req, res, next) {
-//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5500')
-//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With')
-//   res.setHeader('Access-Control-Allow-Credentials', true)
-//   next()
-// })
 
 app.use((err, req, res, next) => {
   res
