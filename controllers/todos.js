@@ -25,7 +25,10 @@ const getCurrentUserTodos = async (req, res, next) => {
   const skip = (page - 1) * limit
   try {
     const allTodos = await (await Todo.find({ userId: req.params.id })).length
-    const totalPage = Math.ceil(allTodos / limit)
+    let totalPage = Math.ceil(allTodos / limit)
+    if (totalPage === 0) {
+      totalPage = 1
+    }
     const todos = await Todo.find({ userId: req.params.id })
       .skip(skip)
       .limit(limit)
