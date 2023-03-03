@@ -44,7 +44,7 @@ const loginUser = async (req, res, next) => {
       maxAge: 1000 * 60 * 60 * 24,
       sameSite: 'None',
       secure: true,
-      domain: 'http://localhost:5500',
+      // domain: 'http://localhost:5500',
     })
     res.status(200).json({
       staus: 'success',
