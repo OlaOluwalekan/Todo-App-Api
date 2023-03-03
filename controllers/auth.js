@@ -47,7 +47,7 @@ const loginUser = async (req, res, next) => {
           httpOnly: true,
           maxAge: 1000 * 60 * 60 * 24,
         },
-        'sameSite=None'
+        'samesite=none'
       )
       .status(200)
       .json({
