@@ -40,15 +40,11 @@ const loginUser = async (req, res, next) => {
     const { password, ...rest } = user._doc
     const token = jwt.sign({ id: user._id }, process.env.JWT_TOKEN)
     res
-      .cookie(
-        'access_token',
-        token,
-        {
-          httpOnly: true,
-          maxAge: 1000 * 60 * 60 * 24,
-        },
-        'samesite=none'
-      )
+      .cookie('access_token', token, {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24,
+        secure: true,
+      })
       .status(200)
       .json({
         staus: 'success',
