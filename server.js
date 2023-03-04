@@ -9,17 +9,11 @@ const usersRoutes = require('./routes/users')
 const todosRoutes = require('./routes/todos')
 const { credentials, corsOptions } = require('./utils/cors')
 
-// MIDDLEWARES
-// app.use(
-//   cors({
-//     origin: 'https://genuine-gelato-006362.netlify.app',
-//     credentials: true,
-//   })
-// )
 app.use(credentials)
 app.use(cors(corsOptions))
 app.use(express.json())
 app.use(cookieParser())
+app.use(express.static('./public'))
 
 // ROUTES MIDDLEWARES
 app.use('/api/v1/auth', authRoutes)

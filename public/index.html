@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>MakeList API Documentation</h1>
+
+      <p>
+        Welcome to the <strong>MakeList</strong> API documentation. This API
+        test how the frontend connects with the backend to create basic
+        <strong>CRUD</strong> operations at the different API endpoint
+      </p>
+      <p>
+        The CRUD operations are <strong>CREATE</strong> - to create an item and
+        save it to the database, <strong>READ</strong> - to read or get data
+        from the databse, <strong>UPDATE</strong> - to update an existing item
+        in the databse and <strong>DELETE</strong> - to delete or remove an item
+        from the database
+      </p>
+      <p>
+        This API uses <strong>MongoDB</strong> as the database. Unlike, other
+        free APIs in which onli get request can be performed (and other http
+        methods are only for simulation). This API catually allow you to post
+        data to the database in form of registring users, login users n and
+        creating, updating and deleting todos
+      </p>
+
+      <h2>End Points</h2>
+      <p>There are 8 endpoints to test:</p>
+      <ol>
+        <li>
+          <h3>Create/Register New Users</h3>
+          <a href="https://ola-todo-app.cyclic.app/api/v1/auth/register"
+            >https://ola-todo-app.cyclic.app/api/v1/auth/register</a
+          >
+          <p>
+            Ths endpoint allow you to register a new user for your app using the
+            <strong>POST</strong> http method. As a post request, you are
+            expected to also specify an object taht represents the data you want
+            to post. In addition,
+            <code class="inline">{withCredentials: true}</code> must be set if
+            you are using axios or
+            <code class="inline">credentials: 'include'</code> if you are using
+            fetch. Ths allows the cookies set in the api to be sent to the
+            browser which is inturn used to authenticate users
+          </p>
+          <code class="external">
+            <pre>
+              try {
+                const { data } = await axios.post(`https://ola-todo-app.cyclic.app/api/v1/auth/register`,
+                {
+                  name,
+                  email,
+                  password
+                },
+                {withCredentials: true}
+                )
+              } catch (error) {
+                console.log(error)
+              }
+            </pre>
+          </code>
+        </li>
+        <li>
+          <h3>Login Users</h3>
+          <a href="https://ola-todo-app.cyclic.app/api/v1/auth/register"
+            >https://ola-todo-app.cyclic.app/api/v1/auth/login</a
+          >
+        </li>
+      </ol>
+    </main>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
