@@ -19,12 +19,11 @@ code.external {
   width: 300px;
   /* max-width: 800px; */
   overflow: hidden;
-  background-color: black;
 }
 
 code > pre {
   width: 100%;
-  background-color: black;
+  background-color: #302d2d;
   color: white;
   padding: 15px;
   overflow: scroll;

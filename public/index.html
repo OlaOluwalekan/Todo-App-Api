@@ -48,7 +48,7 @@
           <p>
             Ths endpoint allow you to register a new user for your app using the
             <strong>POST</strong> http method. As a post request, you are
-            expected to also specify an object taht represents the data you want
+            expected to also specify an object that represents the data you want
             to post. In addition,
             <code class="inline">{withCredentials: true}</code> must be set if
             you are using axios or
@@ -72,12 +72,89 @@
               }
             </pre>
           </code>
+          <p>A sample response you will get is:</p>
+          <code class="external">
+            <pre>
+              {
+                staus: 'success',
+                message: 'registration successful',
+                newUser: {
+                  name: 'ola',
+                  emal: 'ola@gmail.com'
+                  _id: 'hf9573HDJjdfh0j795jduj38shajj'
+                }
+              }
+            </pre>
+          </code>
         </li>
         <li>
           <h3>Login Users</h3>
-          <a href="https://ola-todo-app.cyclic.app/api/v1/auth/register"
+          <a href="https://ola-todo-app.cyclic.app/api/v1/auth/login"
             >https://ola-todo-app.cyclic.app/api/v1/auth/login</a
           >
+          <p>
+            Ths endpoint allow you to login a user into your app using the
+            <strong>POST</strong> http method. As a post request, you are
+            expected to also specify an object that represents the data you want
+            to post. This data will the be compared againt existing data in the
+            database to give suitable response. In addition,
+            <code class="inline">{withCredentials: true}</code> must be set if
+            you are using axios or
+            <code class="inline">credentials: 'include'</code> if you are using
+            fetch. Ths allows the cookies set in the api to be sent to the
+            browser which is inturn used to authenticate users
+          </p>
+          <code class="external">
+            <pre>
+              try {
+                const { data } = await axios.post(`https://ola-todo-app.cyclic.app/api/v1/auth/login`,
+                {
+                  email,
+                  password
+                },
+                {withCredentials: true}
+                )
+              } catch (error) {
+                console.log(error)
+              }
+            </pre>
+          </code>
+          <p>A sample response you will get is:</p>
+          <code class="external">
+            <pre>
+              {
+                staus: 'success',
+                message: 'login successful',
+                newUser: {
+                  emal: 'ola@gmail.com',
+                  _id: 'hf9573HDJjdfh0j795jduj38shajj'
+                }
+              }
+            </pre>
+          </code>
+        </li>
+        <li>
+          <h3>Get a Single User</h3>
+          <a href="https://ola-todo-app.cyclic.app/api/v1/users/dashboard/id"
+            >https://ola-todo-app.cyclic.app/api/v1/users/dashboard/id</a
+          >
+          <p>
+            This endpoint allows you to get a single user after they are logged
+            in and direct them to their respective dashboards. It use a
+            <strong>GET</strong> http method to get the requested resources from
+            the database
+          </p>
+          <code class="externall">
+            <pre>
+              try {
+                const { data } = await axios(`https://ola-todo-app.cyclic.app/api/v1/users/dashboard/${id}`,
+                { withCredentials: true }
+                )
+              } catch (error) {
+                console.log(error)
+              }
+            </pre>
+          </code>
         </li>
       </ol>
     </main>
