@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/', getAllUsers)
 router.get('/dashboard/:id', verifyUser, getUser)
-router.delete('/:id', verifyUser, deleteUser)
+router.delete('/dashboard/:id', verifyUser, deleteUser)
 router.get('/test', verifyToken, (req, res, next) => {
   res.send('hello user, you are logged in')
 })
